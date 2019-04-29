@@ -43,7 +43,7 @@ public class AircraftMovement : MonoBehaviour
 
     private void Update()
     {
-        tiltAroundZ = Input.GetAxis("Horizontal");
+        tiltAroundZ = Input.GetAxisRaw("Horizontal");
         GetAxisForward = Input.GetAxis("Vertical");
         // tiltAroundX = Input.GetAxis("Mouse Y");
         mousePos = Input.mousePosition;
@@ -143,18 +143,22 @@ public class AircraftMovement : MonoBehaviour
 
 
         Quaternion q01 = Quaternion.identity;
-        q01.SetLookRotation(aimedObject.transform.position - transform.position, jetUp); // similar to LookRotation
+        q01.SetLookRotation(aimedObject.transform.position - transform.position, transform.up); // similar to LookRotation
         transform.rotation = q01;
 
         if (tiltAroundZ > 0)
         {
-            giro -= 100 * Time.deltaTime;
+            giro -= 10 * Time.deltaTime;
             // Debug.Log("inclinado: " + SetLookRotation.transform.rotation.eulerAngles.y);
         }
         else if (tiltAroundZ < 0)
         {
-            giro += 100 * Time.deltaTime;
+            giro += 10 * Time.deltaTime;
             //Debug.Log("inclinado: " + SetLookRotation.transform.rotation.eulerAngles.y);
+        }
+        else if(tiltAroundZ == 0)
+        {
+            giro = 0;
         }
 
 
@@ -197,10 +201,11 @@ public class AircraftMovement : MonoBehaviour
 
         jet.altitude = transform.position.y;
 
-        transform.rotation = transform.rotation * Quaternion.Euler(new Vector3(0, 0, giro));
+        
         floorLocation.rectTransform.rotation = Quaternion.Euler(new Vector3(0, 0, transform.rotation.eulerAngles.z * (-1)));
         floorLocation.rectTransform.localPosition = new Vector3(0, inclination, 0);
         transform.rotation = Quaternion.Slerp(aimedObject.transform.rotation, transform.rotation, Time.deltaTime * smooth);
+        transform.rotation = transform.rotation * Quaternion.Euler(new Vector3(0, 0, giro));
         aimedObject.transform.rotation = transform.rotation;
         
 

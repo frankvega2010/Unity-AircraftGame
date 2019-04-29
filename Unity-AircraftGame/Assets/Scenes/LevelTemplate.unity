@@ -1786,7 +1786,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1450188782
 Transform:
   m_ObjectHideFlags: 0
@@ -2086,6 +2086,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AircraftTest
       objectReference: {fileID: 0}
+    - target: {fileID: 5421637128891899696, guid: 4d970706b5f411a4888c541c49b78a53,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1217382772263587393, guid: 4d970706b5f411a4888c541c49b78a53,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2159,6 +2164,26 @@ PrefabInstance:
     - target: {fileID: 5745859773247293184, guid: 4d970706b5f411a4888c541c49b78a53,
         type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3396661780771635942, guid: 4d970706b5f411a4888c541c49b78a53,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543181423204049389, guid: 4d970706b5f411a4888c541c49b78a53,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6012938787944899153, guid: 4d970706b5f411a4888c541c49b78a53,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697169175983250132, guid: 4d970706b5f411a4888c541c49b78a53,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2423,7 +2448,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1988335934
 Transform:
   m_ObjectHideFlags: 0

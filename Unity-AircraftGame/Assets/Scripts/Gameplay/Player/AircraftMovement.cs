@@ -50,7 +50,7 @@ public class AircraftMovement : MonoBehaviour
             }
             else
             {
-                jet.speed += 1  * 10 * Time.deltaTime;
+                jet.speed += 10 * Time.deltaTime;
             }    
         }
         else if (GetAxisForward < 0)
@@ -61,7 +61,18 @@ public class AircraftMovement : MonoBehaviour
             }
             else
             {
-                jet.speed -= 1 * 10 * Time.deltaTime;
+                jet.speed -= 10 * Time.deltaTime;
+            }
+        }
+        else
+        {
+            if (jet.speed < 0)
+            {
+                jet.speed = 0;
+            }
+            else
+            {
+                jet.speed -= 10 * Time.deltaTime;
             }
         }
 

@@ -14,6 +14,14 @@ public class AircraftBullet : MonoBehaviour
     private GameObject objectAffected;
     private UIFollowTarget target;
 
+    private void Start()
+    {
+        if(isBot)
+        {
+            transform.position = dirFrom;
+        }
+    }
+
     // Update is called once per frame
     private void Update()
     {
@@ -24,7 +32,7 @@ public class AircraftBullet : MonoBehaviour
             dir = transform.position - dirDestination;
             if (isBot)
             {
-                transform.position = dirFrom - dir * 0.3f * Time.deltaTime;
+                transform.position = transform.position - dir * 0.3f * Time.deltaTime;
             }
             else
             {

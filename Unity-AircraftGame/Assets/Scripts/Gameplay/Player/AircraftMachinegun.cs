@@ -14,6 +14,8 @@ public class AircraftMachinegun : MonoBehaviour
     private JetStatus jet;
     private float fireRate;
     private bool isFiring;
+    private Transform destObject;
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,11 +24,13 @@ public class AircraftMachinegun : MonoBehaviour
         bullet.GetComponent<BoxCollider>().enabled = false;
         bullet.SetActive(false);
         jet = JetStatus.Get();
+        destObject = GetComponentInParent<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log("asd: " + destObject.position);
         mousePos = Input.mousePosition;
 
         if (isFiring)
@@ -47,7 +51,7 @@ public class AircraftMachinegun : MonoBehaviour
                 isFiring = true;
                 bullet.SetActive(true);
 
-                GameObject bulletCopy = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                GameObject bulletCopy = Instantiate(bullet, new Vector3(destObject.transform.position.x, destObject.transform.position.y, destObject.transform.position.z), Quaternion.identity);
                 AircraftBullet aircraftBulletCopy = bulletCopy.GetComponent<AircraftBullet>();
                 bulletCopy.GetComponent<MeshRenderer>().enabled = true;
                 bulletCopy.GetComponent<BoxCollider>().enabled = true;
@@ -77,11 +81,11 @@ public class AircraftMachinegun : MonoBehaviour
                 bulletCopy.GetComponent<BoxCollider>().enabled = true;
 
                 mousePos.z = 1000.0f;
-                bulletDestObject.transform.position = GetComponentInParent<Transform>().position + (Vector3.forward * 1000);
+                bulletDestObject.transform.position = destObject.forward*100;
 
-                aircraftBulletCopy.transform.rotation = GetComponentInParent<Transform>().rotation;
+                aircraftBulletCopy.transform.rotation = destObject.rotation;
                 aircraftBulletCopy.dirDestination = bulletDestObject.transform.position;
-                aircraftBulletCopy.dirFrom = GetComponentInParent<Transform>().position;
+                aircraftBulletCopy.dirFrom = destObject.position;
 
                 //aircraftBulletCopy.transform.rotation = GetComponentInParent<Transform>().rotation;
                 //bulletDestObject.transform.position = Vector3.forward * 1000;

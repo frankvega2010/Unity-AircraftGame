@@ -24,7 +24,7 @@ public class EnemyAircraft : MonoBehaviour
     void Update()
     {
         Quaternion q01 = Quaternion.identity;
-        q01.SetLookRotation(playerAircraft.transform.position - transform.position, Vector3.up); // similar to LookRotation
+        q01.SetLookRotation(playerAircraft.transform.position - transform.position, transform.up); // similar to LookRotation
 
         //transform.position = transform.position + Vector3.forward * 50 * Time.deltaTime;
         //transform.rotation.SetLookRotation(playerAircraft.transform.position - transform.position, Vector3.up);

@@ -13,6 +13,8 @@ public class AircraftCollision : MonoBehaviour
             case "enemy":
                 break;
             default:
+                
+                //collider.GetComponent<Transform>().position = new Vector3(0, 0, 0);
                 Debug.Log("avion toco");
                 break;
         }

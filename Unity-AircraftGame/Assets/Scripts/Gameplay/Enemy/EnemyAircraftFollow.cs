@@ -17,6 +17,7 @@ public class EnemyAircraftFollow : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             enemy.currentState = EnemyAircraft.enemyState.Follow;
+            enemy.switchOnce = false;
         }
     }
 
@@ -25,6 +26,7 @@ public class EnemyAircraftFollow : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             enemy.currentState = EnemyAircraft.enemyState.Idle;
+            enemy.switchOnce = false;
         }
     }
 }

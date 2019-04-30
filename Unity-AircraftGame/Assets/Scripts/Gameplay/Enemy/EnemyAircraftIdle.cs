@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAircraftEscape : MonoBehaviour
+public class EnemyAircraftIdle : MonoBehaviour
 {
     private EnemyAircraft enemy;
 
@@ -16,7 +16,7 @@ public class EnemyAircraftEscape : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            enemy.currentState = EnemyAircraft.enemyState.Escape;
+            enemy.currentState = EnemyAircraft.enemyState.Idle;
             enemy.switchOnce = false;
         }
     }
@@ -25,7 +25,7 @@ public class EnemyAircraftEscape : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            enemy.currentState = EnemyAircraft.enemyState.Attack;
+            enemy.currentState = EnemyAircraft.enemyState.NotSeen;
             enemy.switchOnce = false;
         }
     }

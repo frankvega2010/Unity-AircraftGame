@@ -10,6 +10,7 @@ public class AircraftMovement : MonoBehaviour
     public GameObject aircraftModel;
     public float giro;
     public float inclination;
+    public bool hasPassedBounds = false;
 
     private float tiltAroundZ;
     private float smooth;
@@ -32,6 +33,11 @@ public class AircraftMovement : MonoBehaviour
 
     private void Update()
     {
+        if(hasPassedBounds)
+        {
+            transform.position = new Vector3(0, 0, 0);
+            hasPassedBounds = false;
+        }
         tiltAroundZ = Input.GetAxisRaw("Horizontal");
         GetAxisForward = Input.GetAxis("Vertical");
         mousePos = Input.mousePosition;

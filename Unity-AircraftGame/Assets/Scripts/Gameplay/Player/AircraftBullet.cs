@@ -44,22 +44,23 @@ public class AircraftBullet : MonoBehaviour
     {
         if(!isBot)
         {
-            if (collision.gameObject.tag == "enemy")
-            {
-                Debug.Log("toco");
-                collision.gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
-                objectAffected = collision.gameObject;
-                Invoke("RestoreColor", 0.1f);
-                //collision.gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
-            }
+            //if (collision.gameObject.tag == "enemy")
+            //{
+            //    Debug.Log("toco");
+            //    collision.gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+            //    objectAffected = collision.gameObject;
+            //    Invoke("RestoreColor", 0.1f);
+            //    //collision.gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
+            //}
 
             if (collision.gameObject.tag == "enemyAircraft")
             {
                 Debug.Log("toco nave enemiga");
                 target = collision.gameObject.GetComponentInChildren<UIFollowTarget>();
-                target.crosshair.color = Color.black;
+                target.crosshair.color = Color.magenta;
                 collision.gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
                 objectAffected = collision.gameObject;
+                //
                 Invoke("RestoreColor", 0.1f);
                 //collision.gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
             }
@@ -78,7 +79,8 @@ public class AircraftBullet : MonoBehaviour
             if (objectAffected.gameObject.tag == "enemyAircraft")
             {
                 objectAffected.GetComponentInChildren<MeshRenderer>().material.color = Color.white;
-                target.crosshair.color = Color.green;
+                objectAffected.gameObject.GetComponent<EnemyAircraft>().switchOnce = false;
+                //target.crosshair.color = Color.green;
             }
         }
         

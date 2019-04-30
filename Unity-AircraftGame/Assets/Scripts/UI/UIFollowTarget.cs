@@ -18,7 +18,7 @@ public class UIFollowTarget : MonoBehaviour
     void Update()
     {
         Vector3 uiPosition = Camera.main.WorldToScreenPoint(enemy.transform.position);
-        crosshair.transform.position = uiPosition + new Vector3(0,8,0);
+        crosshair.transform.position = uiPosition + new Vector3(0,0,0);
         
     }
 }

@@ -4,33 +4,19 @@ using UnityEngine;
 
 public class EnemyAircraftEscape : MonoBehaviour
 {
-    private Transform enemy;
-    private Transform player;
+    private EnemyAircraft enemy;
 
     // Start is called before the first frame update
     void Start()
     {
-        enemy = GetComponentInParent<Transform>();
-        player = GetComponentInParent<EnemyAircraft>().playerAircraft.transform;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        enemy = GetComponentInParent<EnemyAircraft>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-
         if (other.gameObject.tag == "Player")
         {
-            if (GetComponentInParent<EnemyAircraft>().canPursuit)
-            {
-                GetComponentInParent<EnemyAircraft>().canPursuit = false;
-                GetComponentInParent<EnemyAircraft>().inSight = true;
-
-            }
+            enemy.currentState = EnemyAircraft.enemyState.Escape;
         }
     }
 
@@ -38,12 +24,7 @@ public class EnemyAircraftEscape : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            if (!GetComponentInParent<EnemyAircraft>().canPursuit)
-            {
-                GetComponentInParent<EnemyAircraft>().inSight = false;
-                GetComponentInParent<EnemyAircraft>().canPursuit = true;
-            }
-            //Debug.Log("not moving");
+            enemy.currentState = EnemyAircraft.enemyState.Attack;
         }
     }
 }

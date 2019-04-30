@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAircraftFollow : MonoBehaviour
+public class EnemyAircraftShoot : MonoBehaviour
 {
     private EnemyAircraft enemy;
 
@@ -14,9 +14,9 @@ public class EnemyAircraftFollow : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            enemy.currentState = EnemyAircraft.enemyState.Follow;
+            enemy.currentState = EnemyAircraft.enemyState.Attack;
         }
     }
 
@@ -24,7 +24,7 @@ public class EnemyAircraftFollow : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            enemy.currentState = EnemyAircraft.enemyState.Idle;
+            enemy.currentState = EnemyAircraft.enemyState.Follow;
         }
     }
 }

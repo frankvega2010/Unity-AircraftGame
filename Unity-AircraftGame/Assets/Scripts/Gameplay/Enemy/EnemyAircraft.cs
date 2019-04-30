@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class EnemyAircraft : MonoBehaviour
 {
+    public enum enemyState
+    {
+        Idle,
+        Follow,
+        Attack,
+        Escape,
+        maxStates,
+    }
+
     public GameObject playerAircraft;
-    public bool inSight = false;
-    public bool canPursuit = false;
+    public enemyState currentState;
 
     private Vector3 dir;
     private UIFollowTarget target;
     private AircraftMachinegun enemyMG;
-    private bool canShoot;
 
     // Start is called before the first frame update
     void Start()
@@ -26,35 +33,33 @@ public class EnemyAircraft : MonoBehaviour
         Quaternion q01 = Quaternion.identity;
         q01.SetLookRotation(playerAircraft.transform.position - transform.position, transform.up); // similar to LookRotation
 
-        //transform.position = transform.position + Vector3.forward * 50 * Time.deltaTime;
-        //transform.rotation.SetLookRotation(playerAircraft.transform.position - transform.position, Vector3.up);
+        enemyMG.isBotFiring = false;
 
-
-        if (inSight)
+        switch (currentState)
         {
-            //Debug.Log("escaping");
-            dir = playerAircraft.transform.position - transform.position;
-            transform.position = transform.position - dir * 0.5f * Time.deltaTime;
-            transform.rotation = playerAircraft.transform.rotation;
-            target.crosshair.color = Color.green;
-            enemyMG.isBotFiring = false;
-        }
-
-        if (canPursuit)
-        {
-            //Debug.Log("following");
-            dir = transform.position - playerAircraft.transform.position;
-            transform.position = transform.position - dir * 0.5f * Time.deltaTime;
-            transform.rotation = q01;
-            target.crosshair.color = Color.red;
-            enemyMG.isBotFiring = true;
-            //transform.rotation = playerAircraft.transform.rotation;
-
-        }
-
-        if(canShoot)
-        {
-
+            case enemyState.Idle:
+                break;
+            case enemyState.Follow:
+                dir = transform.position - playerAircraft.transform.position;
+                transform.position = transform.position - dir * 0.5f * Time.deltaTime;
+                transform.rotation = q01;
+                break;
+            case enemyState.Attack:
+                dir = transform.position - playerAircraft.transform.position;
+                transform.position = transform.position - dir * 0.5f * Time.deltaTime;
+                transform.rotation = q01;
+                target.crosshair.color = Color.red;
+                enemyMG.isBotFiring = true;
+                break;
+            case enemyState.Escape:
+                dir = playerAircraft.transform.position - transform.position;
+                transform.position = transform.position - dir * 0.5f * Time.deltaTime;
+                transform.rotation = playerAircraft.transform.rotation;
+                target.crosshair.color = Color.green;
+                enemyMG.isBotFiring = false;
+                break;
+            default:
+                break;
         }
     }
 }

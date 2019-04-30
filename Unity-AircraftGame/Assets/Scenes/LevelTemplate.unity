@@ -226,6 +226,7 @@ MonoBehaviour:
   aircraftModel: {fileID: 2043447923}
   giro: 0
   inclination: 0
+  hasPassedBounds: 0
 --- !u!4 &169162726 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1217382772263587393, guid: 4d970706b5f411a4888c541c49b78a53,
@@ -1158,7 +1159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 8e86dca56b4f4b2458c818e03ce827b6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 199.57446
+      value: 603
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 8e86dca56b4f4b2458c818e03ce827b6, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1252,6 +1253,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.400984, y: 0.24664773, z: 0.40153283}
   m_Center: {x: 0.0034724292, y: 0.054972522, z: -0.0019536968}
+--- !u!54 &539076123
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539076120}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &539076124 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 8e86dca56b4f4b2458c818e03ce827b6,
@@ -1357,7 +1374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 97.19171
+      value: 66
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1365,7 +1382,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 269.57446
+      value: 301
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1401,15 +1418,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1558.2565
+      value: 2341.4163
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 3}
       propertyPath: m_LocalScale.y
-      value: 97.39103
+      value: 146.33852
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1558.2565
+      value: 2341.4163
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 3}
       propertyPath: waterMode

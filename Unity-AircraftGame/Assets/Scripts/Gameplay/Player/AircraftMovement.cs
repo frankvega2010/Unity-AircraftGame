@@ -35,7 +35,7 @@ public class AircraftMovement : MonoBehaviour
     {
         if(hasPassedBounds)
         {
-            transform.position = new Vector3(0, 0, 0);
+            transform.position = new Vector3(0, 120, -700);
             hasPassedBounds = false;
         }
         tiltAroundZ = Input.GetAxisRaw("Horizontal");

@@ -11,10 +11,11 @@ public class AircraftMovement : MonoBehaviour
     public float giro;
     public float inclination;
     public bool hasPassedBounds = false;
+    public Vector3 mousePos;
 
     private float tiltAroundZ;
     private float smooth;
-    private Vector3 mousePos;
+    //private Vector3 mousePos;
     private Vector3 v3;
     private Vector3 dir;
     private float calculoRot;
@@ -88,17 +89,20 @@ public class AircraftMovement : MonoBehaviour
 
         if (tiltAroundZ > 0)
         {
-            giro -= 10 * Time.deltaTime;
+            transform.Rotate(new Vector3(0, 0, -10));
+            //giro -= 10 * Time.deltaTime;
             // Debug.Log("inclinado: " + SetLookRotation.transform.rotation.eulerAngles.y);
         }
         else if (tiltAroundZ < 0)
         {
-            giro += 10 * Time.deltaTime; // Usar rotate?
+            transform.Rotate(new Vector3(0, 0, 10));
+            //giro += 10 * Time.deltaTime; // Usar rotate?
             //Debug.Log("inclinado: " + SetLookRotation.transform.rotation.eulerAngles.y);
         }
         else if(tiltAroundZ == 0)
         {
-            giro = 0;
+            transform.Rotate(new Vector3(0, 0, 0));
+            //giro = 0;
         }
 
 
@@ -121,7 +125,7 @@ public class AircraftMovement : MonoBehaviour
         floorLocation.rectTransform.rotation = Quaternion.Euler(new Vector3(0, 0, transform.rotation.eulerAngles.z * (-1)));
         floorLocation.rectTransform.localPosition = new Vector3(0, inclination, 0);
         transform.rotation = Quaternion.Slerp(aimedObject.transform.rotation, transform.rotation, Time.deltaTime * smooth);
-        transform.rotation = transform.rotation * Quaternion.Euler(new Vector3(0, 0, giro)); // Usar rotate?
+        //transform.rotation = transform.rotation * Quaternion.Euler(new Vector3(0, 0, giro)); // Usar rotate?
         aimedObject.transform.rotation = transform.rotation;
         
 

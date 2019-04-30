@@ -16,10 +16,7 @@ public class AircraftBullet : MonoBehaviour
 
     private void Start()
     {
-        if(isBot)
-        {
-            transform.position = dirFrom;
-        }
+        transform.position = dirFrom;
     }
 
     // Update is called once per frame
@@ -40,7 +37,7 @@ public class AircraftBullet : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
         if(!isBot)
         {
@@ -53,13 +50,13 @@ public class AircraftBullet : MonoBehaviour
             //    //collision.gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
             //}
 
-            if (collision.gameObject.tag == "enemyAircraft")
+            if (collider.gameObject.tag == "enemyAircraft")
             {
                 Debug.Log("toco nave enemiga");
-                target = collision.gameObject.GetComponentInChildren<UIFollowTarget>();
+                target = collider.gameObject.GetComponentInChildren<UIFollowTarget>();
                 target.crosshair.color = Color.magenta;
-                collision.gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
-                objectAffected = collision.gameObject;
+                collider.gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
+                objectAffected = collider.gameObject;
                 //
                 Invoke("RestoreColor", 0.1f);
                 //collision.gameObject.GetComponent<MeshRenderer>().material.color = Color.white;

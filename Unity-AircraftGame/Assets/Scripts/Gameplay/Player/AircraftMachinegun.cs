@@ -16,6 +16,7 @@ public class AircraftMachinegun : MonoBehaviour
     private float fireRate;
     private bool isFiring;
     private Transform destObject;
+    private Transform parentTransform;
 
 
     // Start is called before the first frame update
@@ -26,6 +27,7 @@ public class AircraftMachinegun : MonoBehaviour
         bullet.SetActive(false);
         jet = JetStatus.Get();
         destObject = GetComponentInParent<Transform>();
+        parentTransform = GetComponentInParent<Transform>();
     }
 
     // Update is called once per frame
@@ -33,6 +35,7 @@ public class AircraftMachinegun : MonoBehaviour
     {
         //Debug.Log("asd: " + destObject.position);
         mousePos = Input.mousePosition;
+        bulletDestObject.transform.position = parentTransform.position - (parentTransform.forward  * 1000) * (-1);
 
         if (isFiring)
         {
@@ -54,16 +57,14 @@ public class AircraftMachinegun : MonoBehaviour
                     isFiring = true;
                     bullet.SetActive(true);
 
-                    GameObject bulletCopy = Instantiate(bullet, new Vector3(destObject.transform.position.x, destObject.transform.position.y, destObject.transform.position.z), Quaternion.identity);
+                    GameObject bulletCopy = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
                     AircraftBullet aircraftBulletCopy = bulletCopy.GetComponent<AircraftBullet>();
                     bulletCopy.GetComponent<MeshRenderer>().enabled = true;
                     bulletCopy.GetComponent<BoxCollider>().enabled = true;
 
-                    mousePos.z = 1000.0f;
-                    bulletDestObject.transform.position = Camera.main.ScreenToWorldPoint(mousePos);
-
-                    aircraftBulletCopy.transform.rotation = transform.rotation;
+                    aircraftBulletCopy.transform.rotation = destObject.rotation;
                     aircraftBulletCopy.dirDestination = bulletDestObject.transform.position;
+                    aircraftBulletCopy.dirFrom = destObject.position;
 
                     aircraftBulletCopy.isFired = true;
                 }

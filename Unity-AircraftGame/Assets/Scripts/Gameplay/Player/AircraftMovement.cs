@@ -7,8 +7,8 @@ public class AircraftMovement : MonoBehaviour
 {
     public RawImage floorLocation;
     public GameObject aimedObject;
+    public float rotationSpeed;
     public float speedLimit;
-    public float giro;
     public float inclination;
     public bool hasPassedBounds = false;
     public bool hasFuel = true;
@@ -16,7 +16,6 @@ public class AircraftMovement : MonoBehaviour
 
     private float tiltAroundZ;
     private float smooth;
-    //private Vector3 mousePos;
     private Vector3 v3;
     private Vector3 dir;
     private Vector3 mousePos;
@@ -92,46 +91,40 @@ public class AircraftMovement : MonoBehaviour
             jet.speed = 0;
         }
 
-        
-
         Quaternion q01 = Quaternion.identity;
         q01.SetLookRotation(aimedObject.transform.position - transform.position, transform.up); // similar to LookRotation
         transform.rotation = q01;
-
-        if (tiltAroundZ > 0)
-        {
-            transform.Rotate(new Vector3(0, 0, -10));
-        }
-        else if (tiltAroundZ < 0)
-        {
-            transform.Rotate(new Vector3(0, 0, 10));
-        }
-        else if(tiltAroundZ == 0)
-        {
-            transform.Rotate(new Vector3(0, 0, 0));
-        }
-
 
         calculoRot = (transform.localEulerAngles.x + 360) % 360;
 
         if(calculoRot > 270)//270 y 90
         {
             inclination = calculoRot - 360;
-            //Debug.Log("tabla baja: " + inclination);
         }
         else
         {
             inclination = calculoRot;
-            //Debug.Log("tabla sube: " + inclination);
         }
 
         jet.altitude = transform.position.y;
-
         
         floorLocation.rectTransform.rotation = Quaternion.Euler(new Vector3(0, 0, transform.rotation.eulerAngles.z * (-1)));
         floorLocation.rectTransform.localPosition = new Vector3(0, inclination, 0);
         transform.rotation = Quaternion.Slerp(aimedObject.transform.rotation, transform.rotation, Time.deltaTime * smooth);
-        //transform.rotation = transform.rotation * Quaternion.Euler(new Vector3(0, 0, giro)); // Usar rotate?
+
+        if (tiltAroundZ > 0)
+        {
+            transform.Rotate(new Vector3(0, 0, -rotationSpeed));
+        }
+        else if (tiltAroundZ < 0)
+        {
+            transform.Rotate(new Vector3(0, 0, rotationSpeed));
+        }
+        else if (tiltAroundZ == 0)
+        {
+            transform.Rotate(new Vector3(0, 0, 0));
+        }
+
         aimedObject.transform.rotation = transform.rotation;
         
 

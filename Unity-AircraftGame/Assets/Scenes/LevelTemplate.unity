@@ -1750,7 +1750,7 @@ GameObject:
   - component: {fileID: 759163509}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1763,7 +1763,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 759163506}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -821}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1016699254}
@@ -1787,8 +1787,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floorLocation: {fileID: 1756921720}
   aimedObject: {fileID: 329292825}
+  rotationSpeed: 2.5
   speedLimit: 0
-  giro: 0
   inclination: 0
   hasPassedBounds: 0
   hasFuel: 1
@@ -2200,25 +2200,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.15734813, y: 0.10055164, z: 0.23088872}
   m_Center: {x: -0.0006241962, y: 0.06749208, z: -0.022186002}
---- !u!114 &1016699259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1016699255}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 493e9947f8fd19c46a01ae91e106ec67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  floorLocation: {fileID: 1756921720}
-  aimedObject: {fileID: 329292825}
-  speedLimit: 0
-  giro: 0
-  inclination: 0
-  hasPassedBounds: 0
-  hasFuel: 1
 --- !u!1 &1097496504
 GameObject:
   m_ObjectHideFlags: 0

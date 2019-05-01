@@ -7,21 +7,23 @@ public class AircraftMovement : MonoBehaviour
 {
     public RawImage floorLocation;
     public GameObject aimedObject;
-    public GameObject aircraftModel;
+    public float speedLimit;
     public float giro;
     public float inclination;
     public bool hasPassedBounds = false;
-    public Vector3 mousePos;
+    public bool hasFuel = true;
+    
 
     private float tiltAroundZ;
     private float smooth;
     //private Vector3 mousePos;
     private Vector3 v3;
     private Vector3 dir;
+    private Vector3 mousePos;
     private float calculoRot;
     private JetStatus jet;
     private float GetAxisForward;
-    private float speedLimit;
+    
 
     private void Start()
     {
@@ -49,39 +51,48 @@ public class AircraftMovement : MonoBehaviour
         v3.z = 30.0f;
         aimedObject.transform.position = Camera.main.ScreenToWorldPoint(v3);
 
-        if(GetAxisForward > 0)
+        if(hasFuel)
         {
-            if (jet.speed > speedLimit)
+            if (GetAxisForward > 0)
             {
-                jet.speed = speedLimit;
+                if (jet.speed > speedLimit)
+                {
+                    jet.speed = speedLimit;
+                }
+                else
+                {
+                    jet.speed += 10 * Time.deltaTime;
+                }
+            }
+            else if (GetAxisForward < 0)
+            {
+                if (jet.speed < 0)
+                {
+                    jet.speed = 0;
+                }
+                else
+                {
+                    jet.speed -= 10 * Time.deltaTime;
+                }
             }
             else
             {
-                jet.speed += 10 * Time.deltaTime;
-            }    
-        }
-        else if (GetAxisForward < 0)
-        {
-            if(jet.speed < 0)
-            {
-                jet.speed = 0;
-            }
-            else
-            {
-                jet.speed -= 10 * Time.deltaTime;
+                if (jet.speed < 0)
+                {
+                    jet.speed = 0;
+                }
+                else
+                {
+                    jet.speed -= 10 * Time.deltaTime;
+                }
             }
         }
         else
         {
-            if (jet.speed < 0)
-            {
-                jet.speed = 0;
-            }
-            else
-            {
-                jet.speed -= 10 * Time.deltaTime;
-            }
+            jet.speed = 0;
         }
+
+        
 
         Quaternion q01 = Quaternion.identity;
         q01.SetLookRotation(aimedObject.transform.position - transform.position, transform.up); // similar to LookRotation
@@ -90,19 +101,14 @@ public class AircraftMovement : MonoBehaviour
         if (tiltAroundZ > 0)
         {
             transform.Rotate(new Vector3(0, 0, -10));
-            //giro -= 10 * Time.deltaTime;
-            // Debug.Log("inclinado: " + SetLookRotation.transform.rotation.eulerAngles.y);
         }
         else if (tiltAroundZ < 0)
         {
             transform.Rotate(new Vector3(0, 0, 10));
-            //giro += 10 * Time.deltaTime; // Usar rotate?
-            //Debug.Log("inclinado: " + SetLookRotation.transform.rotation.eulerAngles.y);
         }
         else if(tiltAroundZ == 0)
         {
             transform.Rotate(new Vector3(0, 0, 0));
-            //giro = 0;
         }
 
 

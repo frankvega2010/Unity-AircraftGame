@@ -7,6 +7,7 @@ public class UIJetStatus : MonoBehaviour
 {
     public Text altitudeText;
     public Text speedText;
+    public Text fuelText;
 
     private JetStatus jet;
     // Start is called before the first frame update
@@ -20,5 +21,6 @@ public class UIJetStatus : MonoBehaviour
     {
         altitudeText.text = "Altitude: " + jet.altitude.ToString("f1");
         speedText.text = "Speed: " + jet.speed.ToString("f1");
+        fuelText.text = "FUEL " + jet.fuel.ToString() + "%";
     }
 }

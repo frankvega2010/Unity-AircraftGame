@@ -6,6 +6,7 @@ public class JetStatus : MonoBehaviour
 {
     public float altitude;
     public float speed;
+    public int fuel;
 
     private static JetStatus instance;
     public static JetStatus Get()

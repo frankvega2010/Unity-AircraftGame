@@ -7,6 +7,7 @@ public class JetStatus : MonoBehaviour
     public float altitude;
     public float speed;
     public int fuel;
+    public int enemiesLeft;
 
     private static JetStatus instance;
     public static JetStatus Get()
@@ -23,6 +24,6 @@ public class JetStatus : MonoBehaviour
         }
 
         instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 }

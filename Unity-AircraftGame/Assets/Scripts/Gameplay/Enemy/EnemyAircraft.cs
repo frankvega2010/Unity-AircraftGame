@@ -17,11 +17,14 @@ public class EnemyAircraft : MonoBehaviour
     public GameObject playerAircraft;
     public enemyState currentState;
     public bool switchOnce = false;
+    //public bool isDown = false;
     public int fuel;
 
     private Vector3 dir;
     private UIFollowTarget target;
     private AircraftMachinegun enemyMG;
+    private JetStatus player;
+    private bool discountOnce = false;
     
 
     // Start is called before the first frame update
@@ -29,6 +32,8 @@ public class EnemyAircraft : MonoBehaviour
     {
         target = GetComponentInChildren<UIFollowTarget>();
         enemyMG = GetComponentInChildren<AircraftMachinegun>();
+        player = JetStatus.Get();
+        player.enemiesLeft++;
     }
 
     // Update is called once per frame
@@ -102,9 +107,14 @@ public class EnemyAircraft : MonoBehaviour
             if (!switchOnce)
             {
                 target.crosshair.color = new Vector4(0, 0, 0, 0);
-                switchOnce = true;
                 GetComponent<Rigidbody>().useGravity = true;
                 GetComponent<Collider>().isTrigger = false;
+                if(!discountOnce)
+                {
+                    player.enemiesLeft--;
+                    discountOnce = true;
+                } 
+                switchOnce = true;
             }
         }
     }

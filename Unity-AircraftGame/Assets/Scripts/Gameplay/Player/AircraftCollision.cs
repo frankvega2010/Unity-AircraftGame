@@ -8,11 +8,13 @@ public class AircraftCollision : MonoBehaviour
 
     private AircraftMovement playerAircraft;
     private Rigidbody playerRigidbody;
+    private JetStatus jet;
 
     private void Start()
     {
         playerAircraft = player.GetComponentInParent<AircraftMovement>();
         playerRigidbody = player.GetComponentInParent<Rigidbody>();
+        jet = JetStatus.Get();
     }
 
     private void OnTriggerEnter(Collider collider)
@@ -30,6 +32,7 @@ public class AircraftCollision : MonoBehaviour
             default:
                 //collider.GetComponent<Transform>().position = new Vector3(0, 0, 0);
                 playerAircraft.hasFuel = false;
+                jet.fuel = 0;
                 playerRigidbody.useGravity = true;
                 GetComponentInParent<BoxCollider>().isTrigger = false;
                 playerAircraft.enabled = false;

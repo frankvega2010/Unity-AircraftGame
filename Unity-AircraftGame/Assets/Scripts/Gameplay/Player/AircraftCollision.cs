@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class AircraftCollision : MonoBehaviour
 {
-    private AircraftMovement player;
+    public GameObject player;
+
+    private AircraftMovement playerAircraft;
+    private Rigidbody playerRigidbody;
 
     private void Start()
     {
-        player = GetComponentInParent<AircraftMovement>();
+        playerAircraft = player.GetComponentInParent<AircraftMovement>();
+        playerRigidbody = player.GetComponentInParent<Rigidbody>();
     }
 
     private void OnTriggerEnter(Collider collider)
@@ -19,10 +23,15 @@ public class AircraftCollision : MonoBehaviour
                 break;
             case "enemy":
                 break;
+            case "LevelBounds":
+                break;
             default:
 
                 //collider.GetComponent<Transform>().position = new Vector3(0, 0, 0);
-                //player.hasFuel = false;
+                playerAircraft.hasFuel = false;
+                playerRigidbody.useGravity = true;
+                GetComponentInParent<BoxCollider>().isTrigger = false;
+                playerAircraft.enabled = false;
                 Debug.Log("avion toco");
                 break;
         }

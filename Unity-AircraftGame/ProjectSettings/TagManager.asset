@@ -8,6 +8,7 @@ TagManager:
   - enemyAircraft
   - bullet
   - enemyBullet
+  - LevelBounds
   layers:
   - Default
   - TransparentFX

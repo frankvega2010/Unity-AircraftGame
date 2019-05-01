@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class AircraftCollision : MonoBehaviour
 {
+    private AircraftMovement player;
+
+    private void Start()
+    {
+        player = GetComponentInParent<AircraftMovement>();
+    }
+
     private void OnTriggerEnter(Collider collider)
     {
         switch (collider.gameObject.tag)
@@ -13,8 +20,9 @@ public class AircraftCollision : MonoBehaviour
             case "enemy":
                 break;
             default:
-                
+
                 //collider.GetComponent<Transform>().position = new Vector3(0, 0, 0);
+                //player.hasFuel = false;
                 Debug.Log("avion toco");
                 break;
         }

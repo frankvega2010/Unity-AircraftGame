@@ -1747,6 +1747,7 @@ GameObject:
   m_Component:
   - component: {fileID: 759163507}
   - component: {fileID: 759163508}
+  - component: {fileID: 759163510}
   - component: {fileID: 759163509}
   m_Layer: 0
   m_Name: Player
@@ -1788,7 +1789,7 @@ MonoBehaviour:
   floorLocation: {fileID: 1756921720}
   aimedObject: {fileID: 329292825}
   rotationSpeed: 2.5
-  speedLimit: 0
+  speedLimit: 100
   inclination: 0
   hasPassedBounds: 0
   hasFuel: 1
@@ -1808,6 +1809,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &759163510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759163506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 072e517a79c095a4cbf65151b8bfe50d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cockpitCamera: {fileID: 1450188784}
+  thirdPersonCamera: {fileID: 1988335936}
+  HUD: {fileID: 1485335205}
+  HUDInclination: {fileID: 1756921720}
 --- !u!1001 &816246662
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3355,7 +3372,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1988335934
 Transform:
   m_ObjectHideFlags: 0

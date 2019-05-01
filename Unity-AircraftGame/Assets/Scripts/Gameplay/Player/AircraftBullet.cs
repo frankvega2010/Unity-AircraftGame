@@ -13,10 +13,12 @@ public class AircraftBullet : MonoBehaviour
     private float lifespan;
     private GameObject objectAffected;
     private UIFollowTarget target;
+    private JetStatus playerJet;
 
     private void Start()
     {
         transform.position = dirFrom;
+        playerJet = JetStatus.Get();
     }
 
     // Update is called once per frame
@@ -56,9 +58,20 @@ public class AircraftBullet : MonoBehaviour
                 target = collider.gameObject.GetComponentInChildren<UIFollowTarget>();
                 target.crosshair.color = Color.magenta;
                 collider.gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
+                collider.gameObject.GetComponent<EnemyAircraft>().fuel--;
                 objectAffected = collider.gameObject;
-                //
                 Invoke("RestoreColor", 0.1f);
+                //collision.gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
+            }
+        }
+
+        if (isBot)
+        {
+            if (collider.gameObject.tag == "Player")
+            {
+                Debug.Log("has sido atacado");
+                playerJet.fuel--;
+                //Destroy(collider);
                 //collision.gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
             }
         }

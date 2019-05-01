@@ -26,7 +26,14 @@ public class AircraftFuel : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if(timer >= fuelMaxTime)
+        fuelBar.size = jet.fuel * 0.01f;
+
+        if (jet.fuel < 0)
+        {
+            jet.fuel = 0;
+        }
+
+        if (timer >= fuelMaxTime)
         {
             if (jet.fuel > 0)
             {
@@ -37,7 +44,6 @@ public class AircraftFuel : MonoBehaviour
                 playerMovement.hasFuel = false;
                 playerGravity.useGravity = true;
             }
-            fuelBar.size = jet.fuel * 0.01f;
             timer = 0;
         }
     }

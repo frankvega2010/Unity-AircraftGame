@@ -25,8 +25,9 @@ public class AircraftCollision : MonoBehaviour
                 break;
             case "LevelBounds":
                 break;
+            case "enemyBullet":
+                break;
             default:
-
                 //collider.GetComponent<Transform>().position = new Vector3(0, 0, 0);
                 playerAircraft.hasFuel = false;
                 playerRigidbody.useGravity = true;

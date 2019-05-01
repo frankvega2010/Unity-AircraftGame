@@ -827,6 +827,7 @@ MonoBehaviour:
   playerAircraft: {fileID: 1016699255}
   currentState: 0
   switchOnce: 0
+  fuel: 5
 --- !u!65 &236789068
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1423,6 +1424,7 @@ MonoBehaviour:
   playerAircraft: {fileID: 759163506}
   currentState: 0
   switchOnce: 0
+  fuel: 5
 --- !u!65 &539076122
 BoxCollider:
   m_ObjectHideFlags: 0

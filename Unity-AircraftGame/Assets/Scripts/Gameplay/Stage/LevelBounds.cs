@@ -25,7 +25,8 @@ public class LevelBounds : MonoBehaviour
         switch(other.gameObject.tag)
         {
             case "Player":
-                other.GetComponentInParent<AircraftMovement>().hasPassedBounds = true;
+                other.gameObject.GetComponentInParent<AircraftMovement>().hasPassedBounds = true;
+                //player.GetComponent<AircraftMovement>().hasPassedBounds = true;
                 //other.GetComponentInParent<Transform>().position = new Vector3(0, 120, -700);
                 Debug.Log("player teleported");
                 break;

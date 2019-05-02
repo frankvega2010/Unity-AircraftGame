@@ -7,11 +7,14 @@ public class AircraftCamera : MonoBehaviour
 {
     public Camera cockpitCamera;
     public Camera thirdPersonCamera;
+    public GameObject rearViewMirror;
     public RawImage HUD;
     public RawImage HUDInclination;
 
     private bool isCockpitCameraON;
     private bool isTPCameraON;
+    private bool active = false;
+    private bool canSwitch = false;
 
     // Start is called before the first frame update
     private void Start()
@@ -33,6 +36,14 @@ public class AircraftCamera : MonoBehaviour
             isTPCameraON = true;
         }
 
+        if (canSwitch)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                active = !active;
+                rearViewMirror.SetActive(active);
+            }
+        }
 
         if (isCockpitCameraON)
         {
@@ -51,6 +62,7 @@ public class AircraftCamera : MonoBehaviour
         cockpitCamera.enabled = true;
         thirdPersonCamera.enabled = false;
         isCockpitCameraON = false;
+        canSwitch = true;
         activateHUD();
     }
 
@@ -59,6 +71,8 @@ public class AircraftCamera : MonoBehaviour
         cockpitCamera.enabled = false;
         thirdPersonCamera.enabled = true;
         isTPCameraON = false;
+        canSwitch = false;
+        rearViewMirror.SetActive(false);
         deactivateHUD();
     }
 

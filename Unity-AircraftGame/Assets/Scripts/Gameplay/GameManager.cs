@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
         enemiesDestroyedText.text = "";
         finishText.text = "";
         UIPanel.color = new Vector4(0, 0, 0, 0);
+        Cursor.visible = false;
     }
 
     // Update is called once per frame

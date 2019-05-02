@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class AircraftMovement : MonoBehaviour
 {
     public RawImage floorLocation;
+    public RawImage crosshair;
     public GameObject aimedObject;
     public float rotationSpeed;
     public float speedLimit;
@@ -49,8 +50,9 @@ public class AircraftMovement : MonoBehaviour
         transform.position = transform.position - dir * 0.5f * (jet.speed * 0.1f) * Time.deltaTime;
         v3.z = 30.0f;
         aimedObject.transform.position = Camera.main.ScreenToWorldPoint(v3);
+        crosshair.transform.position = mousePos;
 
-        if(hasFuel)
+        if (hasFuel)
         {
             if (GetAxisForward > 0)
             {

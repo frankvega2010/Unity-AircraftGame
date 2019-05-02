@@ -9,9 +9,11 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public GameObject panel;
     public Text finishText;
+    public Text enemiesDestroyedText;
 
     private Vector4 oldPanelColor;
     private JetStatus playerStatus;
+    private EnemiesDestroyed EnemiesDestroyedSingleton;
     private AircraftMovement playerAircraft;
     private float timerLoadScene;
     private Image UIPanel;
@@ -20,8 +22,10 @@ public class GameManager : MonoBehaviour
     {
         oldPanelColor = new Vector4(0, 0, 0, 0.7f);
         playerStatus = JetStatus.Get();
+        EnemiesDestroyedSingleton = EnemiesDestroyed.Get();
         playerAircraft = player.GetComponent<AircraftMovement>();
         UIPanel = panel.GetComponent<Image>();
+        enemiesDestroyedText.text = "";
         finishText.text = "";
         UIPanel.color = new Vector4(0, 0, 0, 0);
     }
@@ -46,6 +50,7 @@ public class GameManager : MonoBehaviour
 
         //UIPlayerHP.isGameFinished = true;
         finishText.text = "You Won!";
+        enemiesDestroyedText.text = "Enemies Destroyed (Total): " + EnemiesDestroyedSingleton.enemiesDestroyed.ToString();
         finishText.color = Color.green;
         timerLoadScene += Time.deltaTime;
         UIPanel.color = oldPanelColor;
@@ -62,7 +67,7 @@ public class GameManager : MonoBehaviour
     private void playerLost()
     {
         playerAircraft.enabled = false; //fpc.enabled = false;
-
+        EnemiesDestroyedSingleton.enemiesDestroyed = 0;
         //UIPlayerHP.isGameFinished = true;
         finishText.text = "You Lost!";
         finishText.color = Color.red;

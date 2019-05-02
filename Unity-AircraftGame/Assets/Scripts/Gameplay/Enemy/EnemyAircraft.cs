@@ -24,6 +24,7 @@ public class EnemyAircraft : MonoBehaviour
     private UIFollowTarget target;
     private AircraftMachinegun enemyMG;
     private JetStatus player;
+    private EnemiesDestroyed enemiesDestroyed;
     private bool discountOnce = false;
     
 
@@ -33,6 +34,7 @@ public class EnemyAircraft : MonoBehaviour
         target = GetComponentInChildren<UIFollowTarget>();
         enemyMG = GetComponentInChildren<AircraftMachinegun>();
         player = JetStatus.Get();
+        enemiesDestroyed = EnemiesDestroyed.Get();
         player.enemiesLeft++;
     }
 
@@ -111,6 +113,7 @@ public class EnemyAircraft : MonoBehaviour
                 GetComponent<Collider>().isTrigger = false;
                 if(!discountOnce)
                 {
+                    enemiesDestroyed.enemiesDestroyed++;
                     player.enemiesLeft--;
                     discountOnce = true;
                 } 

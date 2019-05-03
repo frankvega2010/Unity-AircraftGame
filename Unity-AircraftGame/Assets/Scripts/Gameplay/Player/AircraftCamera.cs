@@ -26,19 +26,18 @@ public class AircraftCamera : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if(Input.mouseScrollDelta.y > 0)
         {
             isCockpitCameraON = true;
         }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if(Input.mouseScrollDelta.y < 0)
         {
             isTPCameraON = true;
         }
 
         if (canSwitch)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.R))
             {
                 active = !active;
                 rearViewMirror.SetActive(active);

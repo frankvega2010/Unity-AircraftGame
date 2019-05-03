@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
         finishText.color = Color.green;
         timerLoadScene += Time.deltaTime;
         UIPanel.color = oldPanelColor;
+        PlayerPrefs.SetInt("highscore", EnemiesDestroyedSingleton.enemiesDestroyed);
 
         if (timerLoadScene >= 3)
         {

@@ -23,6 +23,8 @@ public class AircraftCollision : MonoBehaviour
         {
             case "bullet":
                 break;
+            case "homingMissile":
+                break;
             case "enemy":
                 break;
             case "LevelBounds":

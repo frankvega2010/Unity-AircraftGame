@@ -52,7 +52,7 @@ public class AircraftMovement : MonoBehaviour
         v3.z = 30.0f;
         aimedObject.transform.position = Camera.main.ScreenToWorldPoint(v3);
         crosshair.transform.position = mousePos;
-        tpcamera.transform.position = transform.position + (transform.up *2) + (transform.forward*-1) * 10;
+        tpcamera.transform.position = transform.position + (transform.up *2.2f) + (transform.forward*-1) * 7;
 
         if (hasFuel)
         {

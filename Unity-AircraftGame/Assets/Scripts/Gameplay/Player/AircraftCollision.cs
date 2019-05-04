@@ -5,16 +5,19 @@ using UnityEngine;
 public class AircraftCollision : MonoBehaviour
 {
     public GameObject player;
+    public GameObject explosion;
 
     private AircraftMovement playerAircraft;
     private Rigidbody playerRigidbody;
     private JetStatus jet;
+    private ParticleSystem explosionParticles;
 
     private void Start()
     {
         playerAircraft = player.GetComponentInParent<AircraftMovement>();
         playerRigidbody = player.GetComponentInParent<Rigidbody>();
         jet = JetStatus.Get();
+        explosionParticles = explosion.GetComponent<ParticleSystem>();
     }
 
     private void OnTriggerEnter(Collider collider)
@@ -34,6 +37,7 @@ public class AircraftCollision : MonoBehaviour
             default:
                 //collider.GetComponent<Transform>().position = new Vector3(0, 0, 0);
                 playerAircraft.hasFuel = false;
+                explosionParticles.Play();
                 jet.fuel = 0;
                 playerRigidbody.useGravity = true;
                 GetComponentInParent<BoxCollider>().isTrigger = false;

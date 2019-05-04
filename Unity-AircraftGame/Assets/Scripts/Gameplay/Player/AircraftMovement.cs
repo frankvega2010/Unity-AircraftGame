@@ -8,6 +8,7 @@ public class AircraftMovement : MonoBehaviour
     public RawImage floorLocation;
     public RawImage crosshair;
     public GameObject aimedObject;
+    public Camera tpcamera;
     public float rotationSpeed;
     public float speedLimit;
     public float inclination;
@@ -51,6 +52,7 @@ public class AircraftMovement : MonoBehaviour
         v3.z = 30.0f;
         aimedObject.transform.position = Camera.main.ScreenToWorldPoint(v3);
         crosshair.transform.position = mousePos;
+        tpcamera.transform.position = transform.position + (transform.up *2) + (transform.forward*-1) * 10;
 
         if (hasFuel)
         {
@@ -112,8 +114,9 @@ public class AircraftMovement : MonoBehaviour
         
         floorLocation.rectTransform.rotation = Quaternion.Euler(new Vector3(0, 0, transform.rotation.eulerAngles.z * (-1)));
         floorLocation.rectTransform.localPosition = new Vector3(0, inclination, 0);
+        tpcamera.transform.rotation = Quaternion.Slerp(aimedObject.transform.rotation, tpcamera.transform.rotation, Time.deltaTime * 5);
         transform.rotation = Quaternion.Slerp(aimedObject.transform.rotation, transform.rotation, Time.deltaTime * smooth);
-
+        
         if (tiltAroundZ > 0)
         {
             transform.Rotate(new Vector3(0, 0, -rotationSpeed));

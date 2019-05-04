@@ -15,6 +15,7 @@ public class EnemyAircraft : MonoBehaviour
     }
 
     public GameObject playerAircraft;
+    public GameObject explosion;
     public enemyState currentState;
     public bool switchOnce = false;
     //public bool isDown = false;
@@ -25,6 +26,7 @@ public class EnemyAircraft : MonoBehaviour
     private AircraftMachinegun enemyMG;
     private JetStatus player;
     private EnemiesDestroyed enemiesDestroyed;
+    private ParticleSystem explosionParticles;
     private bool discountOnce = false;
     
 
@@ -36,6 +38,7 @@ public class EnemyAircraft : MonoBehaviour
         player = JetStatus.Get();
         enemiesDestroyed = EnemiesDestroyed.Get();
         player.enemiesLeft++;
+        explosionParticles = explosion.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -115,10 +118,17 @@ public class EnemyAircraft : MonoBehaviour
                 {
                     enemiesDestroyed.enemiesDestroyed++;
                     player.enemiesLeft--;
+                    explosionParticles.Play();
+                    Invoke("DestroyEnemy", 3);
                     discountOnce = true;
                 } 
                 switchOnce = true;
             }
         }
+    }
+
+    private void DestroyEnemy()
+    {
+        Destroy(gameObject);
     }
 }

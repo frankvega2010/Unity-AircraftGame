@@ -12,6 +12,7 @@ public class Turret : MonoBehaviour
     }
 
     public GameObject playerAircraft;
+    public GameObject explosion;
     public enemyTurretState currentState;
     public bool switchOnce = false;
     //public bool isDown = false;
@@ -23,7 +24,7 @@ public class Turret : MonoBehaviour
     private JetStatus player;
     private EnemiesDestroyed enemiesDestroyed;
     private bool discountOnce = false;
-
+    private ParticleSystem explosionParticles;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,7 @@ public class Turret : MonoBehaviour
         player = JetStatus.Get();
         enemiesDestroyed = EnemiesDestroyed.Get();
         player.enemiesLeft++;
+        explosionParticles = explosion.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -84,10 +86,17 @@ public class Turret : MonoBehaviour
                     enemiesDestroyed.enemiesDestroyed++;
                     player.enemiesLeft--;
                     discountOnce = true;
+                    explosionParticles.Play();
+                    Invoke("DestroyEnemy", 3);
                     enemyMG.isBotFiring = false;
                 }
                 switchOnce = true;
             }
         }
+    }
+
+    private void DestroyEnemy()
+    {
+        Destroy(gameObject);
     }
 }

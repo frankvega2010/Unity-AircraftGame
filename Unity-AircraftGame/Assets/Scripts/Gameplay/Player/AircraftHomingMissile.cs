@@ -59,6 +59,19 @@ public class AircraftHomingMissile : MonoBehaviour
             Invoke("RestoreColor", 0.1f);
             //collision.gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
         }
+
+        if (collider.gameObject.tag == "enemyTurret")
+        {
+            Turret enemyTarget = collider.gameObject.GetComponent<Turret>();
+            Debug.Log("kill confirmed");
+            targetUI = collider.gameObject.GetComponentInChildren<UIFollowTarget>();
+            targetUI.crosshair.color = Color.magenta;
+            collider.gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
+            enemyTarget.fuel = enemyTarget.fuel - 10;
+            objectAffected = collider.gameObject;
+            Invoke("RestoreColor", 0.1f);
+            //collision.gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
+        }
     }
 
     private void RestoreColor()
@@ -76,6 +89,13 @@ public class AircraftHomingMissile : MonoBehaviour
             //target.crosshair.color = Color.green;
         }
 
+        if (objectAffected.gameObject.tag == "enemyTurret")
+        {
+            objectAffected.GetComponentInChildren<MeshRenderer>().material.color = Color.white;
+            objectAffected.gameObject.GetComponent<Turret>().switchOnce = false;
+            missileLauncher.isFiring = false;
+            //target.crosshair.color = Color.green;
+        }
 
         Destroy(gameObject);
     }

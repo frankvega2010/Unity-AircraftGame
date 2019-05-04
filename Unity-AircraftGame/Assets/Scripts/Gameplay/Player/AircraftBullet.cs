@@ -63,6 +63,18 @@ public class AircraftBullet : MonoBehaviour
                 Invoke("RestoreColor", 0.1f);
                 //collision.gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
             }
+
+            if (collider.gameObject.tag == "enemyTurret")
+            {
+                Debug.Log("toco nave enemiga");
+                target = collider.gameObject.GetComponentInChildren<UIFollowTarget>();
+                target.crosshair.color = Color.magenta;
+                collider.gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
+                collider.gameObject.GetComponent<Turret>().fuel--;
+                objectAffected = collider.gameObject;
+                Invoke("RestoreColor", 0.1f);
+                //collision.gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
+            }
         }
 
         if (isBot)
@@ -90,6 +102,13 @@ public class AircraftBullet : MonoBehaviour
             {
                 objectAffected.GetComponentInChildren<MeshRenderer>().material.color = Color.white;
                 objectAffected.gameObject.GetComponent<EnemyAircraft>().switchOnce = false;
+                //target.crosshair.color = Color.green;
+            }
+
+            if (objectAffected.gameObject.tag == "enemyTurret")
+            {
+                objectAffected.GetComponentInChildren<MeshRenderer>().material.color = Color.white;
+                objectAffected.gameObject.GetComponent<Turret>().switchOnce = false;
                 //target.crosshair.color = Color.green;
             }
         }

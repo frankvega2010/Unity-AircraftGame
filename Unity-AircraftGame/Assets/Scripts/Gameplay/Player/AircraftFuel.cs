@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class AircraftFuel : MonoBehaviour
 {
     public GameObject player;
-    public int fuelMaxTime;
-    public float timerDecreaseFuel;
+    public float fuelMaxTime;
 
+    private float timerDecreaseFuel;
     private AircraftMovement playerMovement;
     private Rigidbody playerGravity;
     private JetStatus jet;

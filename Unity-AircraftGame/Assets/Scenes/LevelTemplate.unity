@@ -21628,8 +21628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 759163506}
-  fuelMaxTime: 1
-  timerDecreaseFuel: 0
+  fuelMaxTime: 1.5
 --- !u!1 &890027715
 GameObject:
   m_ObjectHideFlags: 0

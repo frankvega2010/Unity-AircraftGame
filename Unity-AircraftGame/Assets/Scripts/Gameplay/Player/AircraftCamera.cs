@@ -21,6 +21,7 @@ public class AircraftCamera : MonoBehaviour
     {
         isCockpitCameraON = true;
         isTPCameraON = false;
+        active = false;
     }
 
     // Update is called once per frame

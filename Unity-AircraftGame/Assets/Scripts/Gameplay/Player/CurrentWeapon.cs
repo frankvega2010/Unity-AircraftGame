@@ -22,34 +22,31 @@ public class CurrentWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            weaponSwitch = !weaponSwitch;
-            weaponSwitch2 = !weaponSwitch2;
-
-            missileLauncher.SetActive(weaponSwitch);
-            machineGun.SetActive(weaponSwitch2);
-        }
-
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-
+            weaponSwitch = true;
+            weaponSwitch2 = false;
         }
 
-        
-
-
-        if(weaponSwitch2)
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            //missileLauncher.SetActive(false);
+            weaponSwitch2 = true;
+            weaponSwitch = false;
+        }
+
+        if (weaponSwitch)
+        {
+            machineGun.SetActive(weaponSwitch);
+            missileLauncher.SetActive(weaponSwitch2);
             ammoText.text = "Current Ammo: -";
             weaponText.text = "Current Weapon: Machine Gun";
             ammoText.color = Color.green;
         }
-        else if(weaponSwitch)
+        else if(weaponSwitch2)
         {
-            //machineGun.SetActive(false);
-            if(playerMissileLauncher.isFiring)
+            machineGun.SetActive(weaponSwitch);
+            missileLauncher.SetActive(weaponSwitch2);
+            if (playerMissileLauncher.isFiring)
             {
                 ammoText.text = "Current Ammo: RELOADING...";
                 ammoText.color = Color.red;

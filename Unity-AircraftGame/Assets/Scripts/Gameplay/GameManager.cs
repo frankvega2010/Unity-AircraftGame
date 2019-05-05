@@ -10,7 +10,9 @@ public class GameManager : MonoBehaviour
     public GameObject panel;
     public Text finishText;
     public Text enemiesDestroyedText;
+    public Text gameStartText;
     public float LoadSceneTime = 3;
+    public float gameStartTime = 3;
 
     private Vector4 oldPanelColor;
     private LevelStatus levelStatus;
@@ -19,6 +21,8 @@ public class GameManager : MonoBehaviour
     private AircraftMovement playerAircraft;
     private AircraftCamera playerCamera;
     private float timerLoadScene;
+    private float gameStartTimer;
+    private bool gameStartSwitchOnce;
     private Image UIPanel;
     // Start is called before the first frame update
     private void Start()
@@ -39,7 +43,15 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if(playerStatus.enemiesLeft <= 0)
+        gameStartTimer += Time.deltaTime;
+
+        if(gameStartTimer > gameStartTime && !gameStartSwitchOnce)
+        {
+            gameStartText.text = "";
+            gameStartSwitchOnce = true;
+        }
+
+        if (playerStatus.enemiesLeft <= 0)
         {
             playerWon();
         }

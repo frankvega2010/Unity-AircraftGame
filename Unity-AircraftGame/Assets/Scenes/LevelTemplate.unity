@@ -555,7 +555,7 @@ MonoBehaviour:
   finishText: {fileID: 1536816604}
   enemiesDestroyedText: {fileID: 1445715227}
   gameStartText: {fileID: 1146411848}
-  LoadSceneTime: 4
+  LoadSceneTime: 3
   gameStartTime: 3
 --- !u!114 &174821925
 MonoBehaviour:

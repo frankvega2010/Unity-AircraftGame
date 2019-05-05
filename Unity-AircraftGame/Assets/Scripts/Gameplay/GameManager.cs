@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private JetStatus playerStatus;
     private EnemiesDestroyed EnemiesDestroyedSingleton;
     private AircraftMovement playerAircraft;
+    private AircraftCamera playerCamera;
     private float timerLoadScene;
     private Image UIPanel;
     // Start is called before the first frame update
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
         playerStatus = JetStatus.Get();
         EnemiesDestroyedSingleton = EnemiesDestroyed.Get();
         playerAircraft = player.GetComponent<AircraftMovement>();
+        playerCamera = player.GetComponent<AircraftCamera>();
         UIPanel = panel.GetComponent<Image>();
         enemiesDestroyedText.text = "";
         finishText.text = "";
@@ -79,6 +81,7 @@ public class GameManager : MonoBehaviour
         enemiesDestroyedText.text = "Enemies Destroyed (Total): " + EnemiesDestroyedSingleton.enemiesDestroyed.ToString();
         timerLoadScene += Time.deltaTime;
         UIPanel.color = oldPanelColor;
+        playerCamera.isTPCameraON = true;
 
         if (PlayerPrefs.GetInt("highscore") < EnemiesDestroyedSingleton.enemiesDestroyed)
         {

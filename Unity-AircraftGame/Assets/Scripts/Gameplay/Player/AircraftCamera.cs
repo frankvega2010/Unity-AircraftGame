@@ -10,9 +10,9 @@ public class AircraftCamera : MonoBehaviour
     public GameObject rearViewMirror;
     public RawImage HUD;
     public RawImage HUDInclination;
+    public bool isTPCameraON;
 
     private bool isCockpitCameraON;
-    private bool isTPCameraON;
     private bool active = false;
     private bool canSwitch = false;
 

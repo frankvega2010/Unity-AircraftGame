@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LevelBounds : MonoBehaviour
 {
+    //public GameObject enemy;
+
     private void OnTriggerEnter(Collider other)
     {
         switch (other.gameObject.tag)
@@ -25,7 +27,7 @@ public class LevelBounds : MonoBehaviour
                 other.gameObject.GetComponentInParent<AircraftMovement>().hasPassedBounds = true;
                 break;
             case "enemyAircraft":
-                other.gameObject.transform.position = new Vector3(other.gameObject.transform.position.x, 320, other.gameObject.transform.position.z) + other.gameObject.transform.forward * -1 * 3000;
+                other.gameObject.GetComponentInParent<EnemyAircraft>().hasPassedBounds = true;
                 break;
             case "MainCamera":
                 other.gameObject.transform.position = other.gameObject.transform.position + other.gameObject.transform.forward*-1 * 1000;

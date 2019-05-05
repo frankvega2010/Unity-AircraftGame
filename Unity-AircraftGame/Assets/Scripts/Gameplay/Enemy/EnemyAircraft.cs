@@ -18,6 +18,7 @@ public class EnemyAircraft : MonoBehaviour
     public GameObject explosion;
     public enemyState currentState;
     public bool switchOnce = false;
+    public bool hasPassedBounds = false;
     public int fuel;
 
     private Vector3 dir;
@@ -45,6 +46,12 @@ public class EnemyAircraft : MonoBehaviour
     {
         if(fuel > 0)
         {
+            if (hasPassedBounds)
+            {
+                transform.position = new Vector3(260, 280, 300);
+                hasPassedBounds = false;
+            }
+
             Quaternion q01 = Quaternion.identity;
             q01.SetLookRotation(playerAircraft.transform.position - transform.position, transform.up);
 

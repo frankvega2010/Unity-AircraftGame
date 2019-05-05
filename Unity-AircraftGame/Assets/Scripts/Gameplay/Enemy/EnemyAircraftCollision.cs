@@ -10,7 +10,7 @@ public class EnemyAircraftCollision : MonoBehaviour
 
     private void Start()
     {
-        enemyAircraft = enemy.GetComponent<EnemyAircraft>();
+        enemyAircraft = GetComponent<EnemyAircraft>();
     }
 
     private void OnTriggerEnter(Collider collider)
@@ -33,7 +33,6 @@ public class EnemyAircraftCollision : MonoBehaviour
                 break;
             default:
                 enemyAircraft.fuel = 0;
-                Debug.Log("enemigo choco: " + collider.gameObject.tag);
                 break;
         }
 

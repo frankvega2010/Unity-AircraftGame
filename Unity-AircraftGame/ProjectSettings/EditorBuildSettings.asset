@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/LevelTemplate.unity
     guid: 711d8851cef5bf849b164cae60e3be88
   - enabled: 1
+    path: Assets/Scenes/LevelTemplate2.unity
+    guid: 4f3f98d82bc13c648b27d7c2f62cf653
+  - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 0b58c00bd3b5ae54b95fae023c9173fd
   m_configObjects: {}

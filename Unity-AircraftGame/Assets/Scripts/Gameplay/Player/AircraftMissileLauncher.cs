@@ -38,7 +38,7 @@ public class AircraftMissileLauncher : MonoBehaviour
             crosshairImage.color = Color.yellow;
         }
 
-            RaycastHit hit;
+        RaycastHit hit;
 
         if (Physics.Raycast(transform.position, transform.forward, out hit, rayDistance, rayCastLayer))
         {
@@ -46,9 +46,10 @@ public class AircraftMissileLauncher : MonoBehaviour
 
             string layerHitted = LayerMask.LayerToName(hit.transform.gameObject.layer);
 
-            
+
 
             //AcidFloor acidEnemy = hit.transform.gameObject.GetComponent<AcidFloor>();
+            Debug.Log(layerHitted);
 
             switch (layerHitted)
             {

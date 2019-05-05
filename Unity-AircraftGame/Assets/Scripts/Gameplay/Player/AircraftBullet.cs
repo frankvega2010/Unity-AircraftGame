@@ -58,7 +58,7 @@ public class AircraftBullet : MonoBehaviour
                 target = collider.gameObject.GetComponentInChildren<UIFollowTarget>();
                 target.crosshair.color = Color.magenta;
                 collider.gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
-                collider.gameObject.GetComponent<EnemyAircraft>().fuel--;
+                collider.gameObject.GetComponentInParent<EnemyAircraft>().fuel--;
                 objectAffected = collider.gameObject;
                 Invoke("RestoreColor", 0.1f);
                 //collision.gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
@@ -101,7 +101,7 @@ public class AircraftBullet : MonoBehaviour
             if (objectAffected.gameObject.tag == "enemyAircraft")
             {
                 objectAffected.GetComponentInChildren<MeshRenderer>().material.color = Color.white;
-                objectAffected.gameObject.GetComponent<EnemyAircraft>().switchOnce = false;
+                objectAffected.gameObject.GetComponentInParent<EnemyAircraft>().switchOnce = false;
                 //target.crosshair.color = Color.green;
             }
 

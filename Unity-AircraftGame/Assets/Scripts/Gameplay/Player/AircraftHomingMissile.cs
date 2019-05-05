@@ -49,7 +49,7 @@ public class AircraftHomingMissile : MonoBehaviour
     {
         if (collider.gameObject.tag == "enemyAircraft")
         {
-            EnemyAircraft enemyTarget = collider.gameObject.GetComponent<EnemyAircraft>();
+            EnemyAircraft enemyTarget = collider.gameObject.GetComponentInParent<EnemyAircraft>();
             Debug.Log("kill confirmed");
             targetUI = collider.gameObject.GetComponentInChildren<UIFollowTarget>();
             targetUI.crosshair.color = Color.magenta;
@@ -84,7 +84,7 @@ public class AircraftHomingMissile : MonoBehaviour
         if (objectAffected.gameObject.tag == "enemyAircraft")
         {
             objectAffected.GetComponentInChildren<MeshRenderer>().material.color = Color.white;
-            objectAffected.gameObject.GetComponent<EnemyAircraft>().switchOnce = false;
+            objectAffected.gameObject.GetComponentInParent<EnemyAircraft>().switchOnce = false;
             missileLauncher.isFiring = false;
             //target.crosshair.color = Color.green;
         }

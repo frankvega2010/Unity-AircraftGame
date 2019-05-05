@@ -6,8 +6,7 @@ public class TurretAttack : MonoBehaviour
 {
     private Turret enemy;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         enemy = GetComponentInParent<Turret>();
     }

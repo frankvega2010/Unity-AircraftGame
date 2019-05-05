@@ -8,9 +8,9 @@ public class AircraftBullet : MonoBehaviour
     public bool isBot = false;
     public Vector3 dirDestination;
     public Vector3 dirFrom;
+    public float lifespan;
 
     private Vector3 dir;
-    private float lifespan;
     private GameObject objectAffected;
     private UIFollowTarget target;
     private JetStatus playerJet;
@@ -43,15 +43,6 @@ public class AircraftBullet : MonoBehaviour
     {
         if(!isBot)
         {
-            //if (collision.gameObject.tag == "enemy")
-            //{
-            //    Debug.Log("toco");
-            //    collision.gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
-            //    objectAffected = collision.gameObject;
-            //    Invoke("RestoreColor", 0.1f);
-            //    //collision.gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
-            //}
-
             if (collider.gameObject.tag == "enemyAircraft")
             {
                 Debug.Log("toco nave enemiga");
@@ -61,7 +52,6 @@ public class AircraftBullet : MonoBehaviour
                 collider.gameObject.GetComponentInParent<EnemyAircraft>().fuel--;
                 objectAffected = collider.gameObject;
                 Invoke("RestoreColor", 0.1f);
-                //collision.gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
             }
 
             if (collider.gameObject.tag == "enemyTurret")
@@ -73,7 +63,6 @@ public class AircraftBullet : MonoBehaviour
                 collider.gameObject.GetComponent<Turret>().fuel--;
                 objectAffected = collider.gameObject;
                 Invoke("RestoreColor", 0.1f);
-                //collision.gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
             }
         }
 
@@ -83,8 +72,6 @@ public class AircraftBullet : MonoBehaviour
             {
                 Debug.Log("has sido atacado");
                 playerJet.fuel--;
-                //Destroy(collider);
-                //collision.gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
             }
         }
     }
@@ -102,7 +89,6 @@ public class AircraftBullet : MonoBehaviour
             {
                 objectAffected.GetComponentInChildren<MeshRenderer>().material.color = Color.white;
                 objectAffected.gameObject.GetComponentInParent<EnemyAircraft>().switchOnce = false;
-                //target.crosshair.color = Color.green;
             }
 
             if (objectAffected.gameObject.tag == "enemyTurret")
@@ -112,7 +98,6 @@ public class AircraftBullet : MonoBehaviour
                 //target.crosshair.color = Color.green;
             }
         }
-        
 
         Destroy(gameObject);
     }

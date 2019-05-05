@@ -14,13 +14,13 @@ public class CurrentWeapon : MonoBehaviour
     private bool weaponSwitch = true;
     private bool weaponSwitch2 = false;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         playerMissileLauncher = missileLauncher.GetComponent<AircraftMissileLauncher>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {

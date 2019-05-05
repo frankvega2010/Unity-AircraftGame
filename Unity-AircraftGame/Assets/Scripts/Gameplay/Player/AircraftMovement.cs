@@ -11,11 +11,10 @@ public class AircraftMovement : MonoBehaviour
     public Camera tpcamera;
     public float rotationSpeed;
     public float speedLimit;
-    public float inclination;
     public bool hasPassedBounds = false;
     public bool hasFuel = true;
-    
 
+    private float inclination;
     private float tiltAroundZ;
     private float smooth;
     private Vector3 v3;
@@ -96,12 +95,12 @@ public class AircraftMovement : MonoBehaviour
         }
 
         Quaternion q01 = Quaternion.identity;
-        q01.SetLookRotation(aimedObject.transform.position - transform.position, transform.up); // similar to LookRotation
+        q01.SetLookRotation(aimedObject.transform.position - transform.position, transform.up);
         transform.rotation = q01;
 
         calculoRot = (transform.localEulerAngles.x + 360) % 360;
 
-        if(calculoRot > 270)//270 y 90
+        if(calculoRot > 270)
         {
             inclination = calculoRot - 360;
         }

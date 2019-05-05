@@ -10,20 +10,13 @@ public class LoadHighscore : MonoBehaviourSingleton<LoadHighscore>
 
     private void Start()
     {
+        highscore = 0;
+
         if (PlayerPrefs.HasKey("highscore"))
         {
-            highscore = PlayerPrefs.GetInt("highscore");
-            highscoreText.text = "HighScore: " + highscore.ToString();
+            highscore = PlayerPrefs.GetInt("highscore"); 
         }
-        else
-        {
-            highscore = 0;
-            highscoreText.text = "HighScore: " + highscore.ToString();
-        }
-    }
 
-    //public void getHighscore()
-    //{
-        
-    //}
+        highscoreText.text = "HighScore: " + highscore.ToString();
+    }
 }

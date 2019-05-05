@@ -35,14 +35,12 @@ public class AircraftCollision : MonoBehaviour
             case "enemyBullet":
                 break;
             default:
-                //collider.GetComponent<Transform>().position = new Vector3(0, 0, 0);
                 playerAircraft.hasFuel = false;
                 explosionParticles.Play();
                 jet.fuel = 0;
                 playerRigidbody.useGravity = true;
                 GetComponentInParent<BoxCollider>().isTrigger = false;
                 playerAircraft.enabled = false;
-                Debug.Log("avion toco");
                 break;
         }
         

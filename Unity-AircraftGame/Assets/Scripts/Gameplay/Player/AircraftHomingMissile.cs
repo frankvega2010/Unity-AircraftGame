@@ -7,11 +7,10 @@ public class AircraftHomingMissile : MonoBehaviour
     public GameObject playerMissileLauncher;
     public GameObject target;
     public bool isFired = false;
-    //public Vector3 dirDestination;
     public Vector3 dirFrom;
+    public float lifespan;
 
     private Vector3 dir;
-    private float lifespan;
     private GameObject objectAffected;
     private UIFollowTarget targetUI;
     private AircraftMissileLauncher missileLauncher;
@@ -57,7 +56,6 @@ public class AircraftHomingMissile : MonoBehaviour
             enemyTarget.fuel = enemyTarget.fuel - 10;
             objectAffected = collider.gameObject;
             Invoke("RestoreColor", 0.1f);
-            //collision.gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
         }
 
         if (collider.gameObject.tag == "enemyTurret")
@@ -70,32 +68,24 @@ public class AircraftHomingMissile : MonoBehaviour
             enemyTarget.fuel = enemyTarget.fuel - 10;
             objectAffected = collider.gameObject;
             Invoke("RestoreColor", 0.1f);
-            //collision.gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
         }
     }
 
     private void RestoreColor()
     {
-        if (objectAffected.gameObject.tag == "enemy")
-        {
-            objectAffected.GetComponent<MeshRenderer>().material.color = Color.white;
-        }
+        objectAffected.GetComponentInChildren<MeshRenderer>().material.color = Color.white;
 
         if (objectAffected.gameObject.tag == "enemyAircraft")
         {
-            objectAffected.GetComponentInChildren<MeshRenderer>().material.color = Color.white;
             objectAffected.gameObject.GetComponentInParent<EnemyAircraft>().switchOnce = false;
-            missileLauncher.isFiring = false;
-            //target.crosshair.color = Color.green;
         }
 
         if (objectAffected.gameObject.tag == "enemyTurret")
         {
-            objectAffected.GetComponentInChildren<MeshRenderer>().material.color = Color.white;
             objectAffected.gameObject.GetComponent<Turret>().switchOnce = false;
-            missileLauncher.isFiring = false;
-            //target.crosshair.color = Color.green;
         }
+
+        missileLauncher.isFiring = false;
 
         Destroy(gameObject);
     }

@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject panel;
     public Text finishText;
     public Text enemiesDestroyedText;
+    public float LoadSceneTime = 3;
 
     private Vector4 oldPanelColor;
     private JetStatus playerStatus;
@@ -47,9 +48,7 @@ public class GameManager : MonoBehaviour
 
     private void playerWon()
     {
-        playerAircraft.enabled = false; //fpc.enabled = false;
-
-        //UIPlayerHP.isGameFinished = true;
+        playerAircraft.enabled = false;
         finishText.text = "You Won!";
         enemiesDestroyedText.text = "Enemies Destroyed (Total): " + EnemiesDestroyedSingleton.enemiesDestroyed.ToString();
         finishText.color = Color.green;
@@ -57,7 +56,7 @@ public class GameManager : MonoBehaviour
         UIPanel.color = oldPanelColor;
         PlayerPrefs.SetInt("highscore", EnemiesDestroyedSingleton.enemiesDestroyed);
 
-        if (timerLoadScene >= 3)
+        if (timerLoadScene >= LoadSceneTime)
         {
             SceneManager.LoadScene("LevelTemplate");
             Cursor.lockState = CursorLockMode.None;
@@ -68,16 +67,17 @@ public class GameManager : MonoBehaviour
 
     private void playerLost()
     {
-        playerAircraft.enabled = false; //fpc.enabled = false;
-        EnemiesDestroyedSingleton.enemiesDestroyed = 0;
-        //UIPlayerHP.isGameFinished = true;
+        playerAircraft.enabled = false;
         finishText.text = "You Lost!";
         finishText.color = Color.red;
+        enemiesDestroyedText.text = "Enemies Destroyed (Total): " + EnemiesDestroyedSingleton.enemiesDestroyed.ToString();
         timerLoadScene += Time.deltaTime;
         UIPanel.color = oldPanelColor;
+        PlayerPrefs.SetInt("highscore", EnemiesDestroyedSingleton.enemiesDestroyed);
 
-        if (timerLoadScene >= 3)
+        if (timerLoadScene >= LoadSceneTime)
         {
+            EnemiesDestroyedSingleton.enemiesDestroyed = 0;
             SceneManager.LoadScene("LevelTemplate");
             Cursor.lockState = CursorLockMode.None;
             Cursor.lockState = CursorLockMode.Confined;

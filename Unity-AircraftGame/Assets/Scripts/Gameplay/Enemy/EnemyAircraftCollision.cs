@@ -5,19 +5,12 @@ using UnityEngine;
 public class EnemyAircraftCollision : MonoBehaviour
 {
     public GameObject enemy;
-    //public GameObject explosion;
 
-    //private AircraftMovement playerAircraft;
     private EnemyAircraft enemyAircraft;
-    //private JetStatus jet;
-    //private ParticleSystem explosionParticles;
 
     private void Start()
     {
-        // enemyAircraft = enemy.GetComponentInParent<AircraftMovement>();
         enemyAircraft = enemy.GetComponent<EnemyAircraft>();
-        //jet = JetStatus.Get();
-        //explosionParticles = explosion.GetComponent<ParticleSystem>();
     }
 
     private void OnTriggerEnter(Collider collider)
@@ -39,7 +32,6 @@ public class EnemyAircraftCollision : MonoBehaviour
             case "enemyBullet":
                 break;
             default:
-                //playerAircraft.hasFuel = false;
                 enemyAircraft.fuel = 0;
                 Debug.Log("enemigo choco: " + collider.gameObject.tag);
                 break;

@@ -7,14 +7,14 @@ public class AircraftFuel : MonoBehaviour
 {
     public GameObject player;
     public int fuelMaxTime;
+    public float timerDecreaseFuel;
 
     private AircraftMovement playerMovement;
     private Rigidbody playerGravity;
     private JetStatus jet;
-    private float timer;
     private Scrollbar fuelBar;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         jet = JetStatus.Get();
         playerMovement = player.GetComponent<AircraftMovement>();
@@ -23,9 +23,9 @@ public class AircraftFuel : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        timer += Time.deltaTime;
+        timerDecreaseFuel += Time.deltaTime;
         fuelBar.size = jet.fuel * 0.01f;
 
         if (jet.fuel < 0)
@@ -33,7 +33,7 @@ public class AircraftFuel : MonoBehaviour
             jet.fuel = 0;
         }
 
-        if (timer >= fuelMaxTime)
+        if (timerDecreaseFuel >= fuelMaxTime)
         {
             if (jet.fuel > 0)
             {
@@ -44,7 +44,7 @@ public class AircraftFuel : MonoBehaviour
                 playerMovement.hasFuel = false;
                 playerGravity.useGravity = true;
             }
-            timer = 0;
+            timerDecreaseFuel = 0;
         }
     }
 }

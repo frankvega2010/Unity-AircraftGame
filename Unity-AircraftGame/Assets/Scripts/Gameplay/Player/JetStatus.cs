@@ -24,6 +24,5 @@ public class JetStatus : MonoBehaviour
         }
 
         instance = this;
-        //DontDestroyOnLoad(gameObject);
     }
 }

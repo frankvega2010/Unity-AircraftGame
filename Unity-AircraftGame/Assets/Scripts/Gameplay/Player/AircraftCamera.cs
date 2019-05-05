@@ -57,7 +57,7 @@ public class AircraftCamera : MonoBehaviour
         }
     }
 
-    public void switchToCockpitCamera()
+    private void switchToCockpitCamera()
     {
         cockpitCamera.enabled = true;
         thirdPersonCamera.enabled = false;
@@ -66,7 +66,7 @@ public class AircraftCamera : MonoBehaviour
         activateHUD();
     }
 
-    public void switchToTPCamera()
+    private void switchToTPCamera()
     {
         cockpitCamera.enabled = false;
         thirdPersonCamera.enabled = true;
@@ -76,13 +76,13 @@ public class AircraftCamera : MonoBehaviour
         deactivateHUD();
     }
 
-    public void deactivateHUD()
+    private void deactivateHUD()
     {
         HUD.enabled = false;
         HUDInclination.enabled = false;
     }
 
-    public void activateHUD()
+    private void activateHUD()
     {
         HUD.enabled = true;
         HUDInclination.enabled = true;

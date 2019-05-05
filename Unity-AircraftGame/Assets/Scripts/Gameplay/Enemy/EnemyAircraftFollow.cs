@@ -6,8 +6,7 @@ public class EnemyAircraftFollow : MonoBehaviour
 {
     private EnemyAircraft enemy;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         enemy = GetComponentInParent<EnemyAircraft>();
     }

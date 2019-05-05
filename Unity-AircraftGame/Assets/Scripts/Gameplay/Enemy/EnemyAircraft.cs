@@ -18,7 +18,6 @@ public class EnemyAircraft : MonoBehaviour
     public GameObject explosion;
     public enemyState currentState;
     public bool switchOnce = false;
-    //public bool isDown = false;
     public int fuel;
 
     private Vector3 dir;
@@ -28,10 +27,10 @@ public class EnemyAircraft : MonoBehaviour
     private EnemiesDestroyed enemiesDestroyed;
     private ParticleSystem explosionParticles;
     private bool discountOnce = false;
-    
+
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         target = GetComponentInChildren<UIFollowTarget>();
         enemyMG = GetComponentInChildren<AircraftMachinegun>();
@@ -42,12 +41,12 @@ public class EnemyAircraft : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if(fuel > 0)
         {
             Quaternion q01 = Quaternion.identity;
-            q01.SetLookRotation(playerAircraft.transform.position - transform.position, transform.up); // similar to LookRotation
+            q01.SetLookRotation(playerAircraft.transform.position - transform.position, transform.up);
 
             enemyMG.isBotFiring = false;
 

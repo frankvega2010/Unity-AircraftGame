@@ -9,16 +9,13 @@ public class LevelBounds : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Player":
-                Debug.Log("player entered");
                 break;
             case "enemyAircraft":
-                Debug.Log("enemy entered");
                 break;
             default:
                 break;
         }
     }
-
 
     private void OnTriggerExit(Collider other)
     {
@@ -26,13 +23,9 @@ public class LevelBounds : MonoBehaviour
         {
             case "Player":
                 other.gameObject.GetComponentInParent<AircraftMovement>().hasPassedBounds = true;
-                //player.GetComponent<AircraftMovement>().hasPassedBounds = true;
-                //other.GetComponentInParent<Transform>().position = new Vector3(0, 120, -700);
-                Debug.Log("player teleported");
                 break;
             case "enemyAircraft":
                 other.gameObject.transform.position = new Vector3(0, 120, -1200);
-                Debug.Log("enemy teleported");
                 break;
             default:
                 break;

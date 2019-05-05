@@ -15,7 +15,6 @@ public class Turret : MonoBehaviour
     public GameObject explosion;
     public enemyTurretState currentState;
     public bool switchOnce = false;
-    //public bool isDown = false;
     public int fuel;
 
     private Vector3 dir;
@@ -27,7 +26,7 @@ public class Turret : MonoBehaviour
     private ParticleSystem explosionParticles;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         target = GetComponentInChildren<UIFollowTarget>();
         enemyMG = GetComponentInChildren<AircraftMachinegun>();
@@ -38,19 +37,15 @@ public class Turret : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (fuel > 0)
         {
-             // similar to LookRotation
-
             enemyMG.isBotFiring = false;
 
             switch (currentState)
             {
                 case enemyTurretState.Idle:
-                    //dir = transform.position - (transform.position + transform.forward * 50);
-                    //transform.position = transform.position - dir * 0.2f * Time.deltaTime;
                     if (!switchOnce)
                     {
                         target.crosshair.color = Color.green;
@@ -60,8 +55,6 @@ public class Turret : MonoBehaviour
                 case enemyTurretState.Attack:
                     Quaternion q01 = Quaternion.identity;
                     q01.SetLookRotation(playerAircraft.transform.position - transform.position, transform.up);
-                    //dir = transform.position - playerAircraft.transform.position;
-                   // transform.position = transform.position - dir * 0.5f * Time.deltaTime;
                     transform.rotation = q01;
                     if (!switchOnce)
                     {

@@ -8,19 +8,18 @@ public class AircraftMachinegun : MonoBehaviour
     public GameObject bulletDestObject;
     public bool isBotFiring;
     public bool isBot;
+    public float fireRate;
 
     private Vector3 mousePos;
     private Vector3 dir;
     private Vector3 dirDestination;
     private JetStatus jet;
-    private float fireRate;
     private bool isFiring;
     private Transform destObject;
     private Transform parentTransform;
 
-
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         bullet.GetComponent<MeshRenderer>().enabled = false;
         bullet.GetComponent<BoxCollider>().enabled = false;
@@ -31,9 +30,8 @@ public class AircraftMachinegun : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        //Debug.Log("asd: " + destObject.position);
         mousePos = Input.mousePosition;
         bulletDestObject.transform.position = parentTransform.position - (parentTransform.forward  * 1000) * (-1);
 

@@ -11,6 +11,7 @@ TagManager:
   - LevelBounds
   - homingMissile
   - enemyTurret
+  - terrain
   layers:
   - Default
   - TransparentFX

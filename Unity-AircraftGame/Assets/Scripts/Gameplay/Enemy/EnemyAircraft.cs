@@ -113,7 +113,7 @@ public class EnemyAircraft : MonoBehaviour
             {
                 target.crosshair.color = new Vector4(0, 0, 0, 0);
                 GetComponent<Rigidbody>().useGravity = true;
-                GetComponent<Collider>().isTrigger = false;
+                GetComponentInChildren<Collider>().isTrigger = false;
                 if(!discountOnce)
                 {
                     enemiesDestroyed.enemiesDestroyed++;

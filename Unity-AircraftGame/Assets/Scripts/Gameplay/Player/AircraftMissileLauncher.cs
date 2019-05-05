@@ -21,7 +21,7 @@ public class AircraftMissileLauncher : MonoBehaviour
     {
         defaultCrosshairColor = crosshair.GetComponent<RawImage>().color;
         crosshairImage = crosshair.GetComponent<RawImage>();
-        missile.GetComponent<MeshRenderer>().enabled = false;
+        //missile.GetComponent<MeshRenderer>().enabled = false;
         missile.GetComponent<BoxCollider>().enabled = false;
         missile.SetActive(false);
         startFrom = GetComponentInParent<Transform>();
@@ -68,7 +68,7 @@ public class AircraftMissileLauncher : MonoBehaviour
 
                                 GameObject missileCopy = Instantiate(missile, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
                                 AircraftHomingMissile missileComponentCopy = missileCopy.GetComponent<AircraftHomingMissile>();
-                                missileComponentCopy.GetComponent<MeshRenderer>().enabled = true;
+                                //missileComponentCopy.GetComponent<MeshRenderer>().enabled = true;
                                 missileComponentCopy.GetComponent<BoxCollider>().enabled = true;
                                 
 

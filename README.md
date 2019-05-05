@@ -1,4 +1,4 @@
-# Aircraft Game WIP
+# Chaotic Skies v1.0
 ## A Unity Project for a College Assigment.
 
 This is a game I made with Unity for a College assigment.

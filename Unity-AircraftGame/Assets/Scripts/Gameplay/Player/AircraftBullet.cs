@@ -45,7 +45,6 @@ public class AircraftBullet : MonoBehaviour
         {
             if (collider.gameObject.tag == "enemyAircraft")
             {
-                Debug.Log("toco nave enemiga");
                 target = collider.gameObject.GetComponentInChildren<UIFollowTarget>();
                 target.crosshair.color = Color.magenta;
                 collider.gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
@@ -56,7 +55,6 @@ public class AircraftBullet : MonoBehaviour
 
             if (collider.gameObject.tag == "enemyTurret")
             {
-                Debug.Log("toco nave enemiga");
                 target = collider.gameObject.GetComponentInChildren<UIFollowTarget>();
                 target.crosshair.color = Color.magenta;
                 collider.gameObject.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
@@ -70,7 +68,6 @@ public class AircraftBullet : MonoBehaviour
         {
             if (collider.gameObject.tag == "Player")
             {
-                Debug.Log("has sido atacado");
                 playerJet.fuel--;
             }
         }

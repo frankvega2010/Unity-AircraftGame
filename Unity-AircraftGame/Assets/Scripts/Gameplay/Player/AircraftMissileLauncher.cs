@@ -43,8 +43,6 @@ public class AircraftMissileLauncher : MonoBehaviour
 
             string layerHitted = LayerMask.LayerToName(hit.transform.gameObject.layer);
 
-            Debug.Log(layerHitted);
-
             switch (layerHitted)
             {
                 case "enemyAircraft":

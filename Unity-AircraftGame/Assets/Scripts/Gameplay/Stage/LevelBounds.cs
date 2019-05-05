@@ -25,7 +25,7 @@ public class LevelBounds : MonoBehaviour
                 other.gameObject.GetComponentInParent<AircraftMovement>().hasPassedBounds = true;
                 break;
             case "enemyAircraft":
-                other.gameObject.transform.position = new Vector3(0, 120, -1200);
+                other.gameObject.transform.position = new Vector3(other.gameObject.transform.position.x, 320, other.gameObject.transform.position.z) + other.gameObject.transform.forward * -1 * 3000;
                 break;
             case "MainCamera":
                 other.gameObject.transform.position = other.gameObject.transform.position + other.gameObject.transform.forward*-1 * 1000;

@@ -11082,12 +11082,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530874858}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.672, y: 0.16, z: -1.75}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.06687988, y: 0.064800106, z: -0.07}
+  m_LocalScale: {x: 0.04, y: 0.04, z: 0.04}
   m_Children: []
-  m_Father: {fileID: 759163507}
-  m_RootOrder: 8
+  m_Father: {fileID: 1016699254}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &530874860
 TrailRenderer:
@@ -11558,12 +11558,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 657798549}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.248, z: -2.923}
-  m_LocalScale: {x: 0.108298056, y: 0.108298056, z: 0.12039495}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0.068320006, z: -0.116920166}
+  m_LocalScale: {x: 0.059064, y: 0.059064, z: 0.08895039}
   m_Children: []
-  m_Father: {fileID: 759163507}
-  m_RootOrder: 7
+  m_Father: {fileID: 1016699254}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!199 &657798551
 ParticleSystemRenderer:
@@ -21164,10 +21164,6 @@ Transform:
   - {fileID: 210690694}
   - {fileID: 346127131}
   - {fileID: 1642634595}
-  - {fileID: 1283513684}
-  - {fileID: 657798550}
-  - {fileID: 530874859}
-  - {fileID: 984866703}
   m_Father: {fileID: 2039563958}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21186,6 +21182,7 @@ MonoBehaviour:
   floorLocation: {fileID: 1756921720}
   crosshair: {fileID: 2015494932}
   aimedObject: {fileID: 329292825}
+  playerModel: {fileID: 1016699255}
   tpcamera: {fileID: 1988335936}
   rotationSpeed: 2.5
   speedLimit: 100
@@ -21906,12 +21903,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 984866702}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.647, y: 0.16, z: -1.75}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.06588013, y: 0.064800106, z: -0.07}
+  m_LocalScale: {x: 0.04, y: 0.04, z: 0.04}
   m_Children: []
-  m_Father: {fileID: 759163507}
-  m_RootOrder: 9
+  m_Father: {fileID: 1016699254}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &984866704
 TrailRenderer:
@@ -27562,12 +27559,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1283513683}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.223, z: -3.103}
-  m_LocalScale: {x: 0.20822945, y: 0.20822945, z: 0.20822945}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.067319945, z: -0.12411987}
+  m_LocalScale: {x: 0.20393607, y: 0.20393607, z: 0.20393607}
   m_Children: []
-  m_Father: {fileID: 759163507}
-  m_RootOrder: 6
+  m_Father: {fileID: 1016699254}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &1283513685
 ParticleSystem:

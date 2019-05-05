@@ -737,6 +737,7 @@ MonoBehaviour:
   explosion: {fileID: 1749136468}
   currentState: 0
   switchOnce: 0
+  hasPassedBounds: 0
   fuel: 5
 --- !u!54 &189273456
 Rigidbody:
@@ -16494,6 +16495,7 @@ MonoBehaviour:
   explosion: {fileID: 1172752029}
   currentState: 0
   switchOnce: 0
+  hasPassedBounds: 0
   fuel: 5
 --- !u!54 &519211719
 Rigidbody:
@@ -16766,6 +16768,7 @@ MonoBehaviour:
   explosion: {fileID: 1573863323}
   currentState: 0
   switchOnce: 0
+  hasPassedBounds: 0
   fuel: 5
 --- !u!54 &539076123
 Rigidbody:
@@ -49909,6 +49912,7 @@ MonoBehaviour:
   explosion: {fileID: 698574306}
   currentState: 0
   switchOnce: 0
+  hasPassedBounds: 0
   fuel: 5
 --- !u!54 &1967579959
 Rigidbody:
@@ -54671,7 +54675,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1988335933}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}

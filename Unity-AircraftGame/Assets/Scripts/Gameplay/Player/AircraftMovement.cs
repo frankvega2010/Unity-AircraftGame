@@ -28,7 +28,7 @@ public class AircraftMovement : MonoBehaviour
 
     private void Start()
     {
-        smooth = 3.0f;
+        smooth = 1.2f;
         inclination = 0;
         jet = JetStatus.Get();
         speedLimit = 100;

@@ -8,15 +8,9 @@ public class LoadHighscore : MonoBehaviourSingleton<LoadHighscore>
     public Text highscoreText;
     public int highscore;
 
-    private void Start()
+    public override void Awake()
     {
-        highscore = 0;
-
-        if (PlayerPrefs.HasKey("highscore"))
-        {
-            highscore = PlayerPrefs.GetInt("highscore"); 
-        }
-
+        highscore = PlayerPrefs.GetInt("highscore", 0);
         highscoreText.text = "HighScore: " + highscore.ToString();
     }
 }

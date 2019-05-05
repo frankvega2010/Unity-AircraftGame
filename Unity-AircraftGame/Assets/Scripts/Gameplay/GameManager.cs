@@ -56,7 +56,11 @@ public class GameManager : MonoBehaviour
         finishText.color = Color.green;
         timerLoadScene += Time.deltaTime;
         UIPanel.color = oldPanelColor;
-        PlayerPrefs.SetInt("highscore", EnemiesDestroyedSingleton.enemiesDestroyed);
+        if (PlayerPrefs.GetInt("highscore") < EnemiesDestroyedSingleton.enemiesDestroyed)
+        {
+            PlayerPrefs.SetInt("highscore", EnemiesDestroyedSingleton.enemiesDestroyed);
+            PlayerPrefs.Save();
+        }
 
         if (timerLoadScene >= LoadSceneTime)
         {
@@ -75,7 +79,12 @@ public class GameManager : MonoBehaviour
         enemiesDestroyedText.text = "Enemies Destroyed (Total): " + EnemiesDestroyedSingleton.enemiesDestroyed.ToString();
         timerLoadScene += Time.deltaTime;
         UIPanel.color = oldPanelColor;
-        PlayerPrefs.SetInt("highscore", EnemiesDestroyedSingleton.enemiesDestroyed);
+
+        if (PlayerPrefs.GetInt("highscore") < EnemiesDestroyedSingleton.enemiesDestroyed)
+        {
+            PlayerPrefs.SetInt("highscore", EnemiesDestroyedSingleton.enemiesDestroyed);
+            PlayerPrefs.Save();
+        }
 
         if (timerLoadScene >= LoadSceneTime)
         {

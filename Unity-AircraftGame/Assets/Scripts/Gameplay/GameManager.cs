@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public float LoadSceneTime = 3;
 
     private Vector4 oldPanelColor;
+    private LevelStatus levelStatus;
     private JetStatus playerStatus;
     private EnemiesDestroyed EnemiesDestroyedSingleton;
     private AircraftMovement playerAircraft;
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
         finishText.text = "";
         UIPanel.color = new Vector4(0, 0, 0, 0);
         Cursor.visible = false;
+        levelStatus = GetComponent<LevelStatus>();
     }
 
     // Update is called once per frame
@@ -58,7 +60,7 @@ public class GameManager : MonoBehaviour
 
         if (timerLoadScene >= LoadSceneTime)
         {
-            SceneManager.LoadScene("LevelTemplate");
+            SceneManager.LoadScene(levelStatus.GetLevelName());
             Cursor.lockState = CursorLockMode.None;
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
@@ -78,7 +80,7 @@ public class GameManager : MonoBehaviour
         if (timerLoadScene >= LoadSceneTime)
         {
             EnemiesDestroyedSingleton.enemiesDestroyed = 0;
-            SceneManager.LoadScene("LevelTemplate");
+            SceneManager.LoadScene("GameOver");
             Cursor.lockState = CursorLockMode.None;
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;

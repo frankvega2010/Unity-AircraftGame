@@ -27,6 +27,9 @@ public class LevelBounds : MonoBehaviour
             case "enemyAircraft":
                 other.gameObject.transform.position = new Vector3(0, 120, -1200);
                 break;
+            case "MainCamera":
+                other.gameObject.transform.position = other.gameObject.transform.position + other.gameObject.transform.forward*-1 * 1000;
+                break;
             default:
                 break;
         }

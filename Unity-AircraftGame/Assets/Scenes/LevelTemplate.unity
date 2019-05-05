@@ -253,6 +253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 174821923}
   - component: {fileID: 174821924}
+  - component: {fileID: 174821925}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -290,6 +291,20 @@ MonoBehaviour:
   panel: {fileID: 468494984}
   finishText: {fileID: 1536816604}
   enemiesDestroyedText: {fileID: 1445715227}
+  LoadSceneTime: 4
+--- !u!114 &174821925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174821922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b5033c4af735d84c8de0529fbcd6f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextLevel: LevelTemplate
 --- !u!1 &204999537
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,6 +431,7 @@ MonoBehaviour:
   bulletDestObject: {fileID: 346127127}
   isBotFiring: 0
   isBot: 0
+  fireRate: 0
 --- !u!1 &219871251
 GameObject:
   m_ObjectHideFlags: 0
@@ -11466,6 +11482,7 @@ MonoBehaviour:
   bulletDestObject: {fileID: 1576360482}
   isBotFiring: 0
   isBot: 1
+  fireRate: 0
 --- !u!1 &654274096
 GameObject:
   m_ObjectHideFlags: 0
@@ -11513,6 +11530,7 @@ MonoBehaviour:
   bulletDestObject: {fileID: 1614092080}
   isBotFiring: 0
   isBot: 1
+  fireRate: 0
 --- !u!1 &657798549
 GameObject:
   m_ObjectHideFlags: 0
@@ -20956,6 +20974,7 @@ MonoBehaviour:
   bulletDestObject: {fileID: 1734870565}
   isBotFiring: 0
   isBot: 1
+  fireRate: 0
 --- !u!1 &723841703
 GameObject:
   m_ObjectHideFlags: 0
@@ -21168,7 +21187,6 @@ MonoBehaviour:
   tpcamera: {fileID: 1988335936}
   rotationSpeed: 2.5
   speedLimit: 100
-  inclination: 0
   hasPassedBounds: 0
   hasFuel: 1
 --- !u!54 &759163509
@@ -21431,6 +21449,7 @@ MonoBehaviour:
   target: {fileID: 0}
   isFired: 0
   dirFrom: {x: 0, y: 0, z: 0}
+  lifespan: 0
 --- !u!54 &819422771
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -21607,6 +21626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 759163506}
   fuelMaxTime: 1
+  timerDecreaseFuel: 0
 --- !u!1 &890027715
 GameObject:
   m_ObjectHideFlags: 0
@@ -33251,6 +33271,8 @@ MonoBehaviour:
     m_Bits: 512
   missile: {fileID: 819422768}
   isFiring: 0
+  rayDistance: 2000
+  canFireTimer: 1.5
 --- !u!1 &1734870565
 GameObject:
   m_ObjectHideFlags: 0
@@ -38987,6 +39009,7 @@ MonoBehaviour:
   isBot: 0
   dirDestination: {x: 0, y: 0, z: 0}
   dirFrom: {x: 0, y: 0, z: 0}
+  lifespan: 0
 --- !u!54 &2044535169
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -39056,6 +39079,7 @@ MonoBehaviour:
   isBot: 1
   dirDestination: {x: 0, y: 0, z: 0}
   dirFrom: {x: 0, y: 0, z: 0}
+  lifespan: 0
 --- !u!65 &2063191045
 BoxCollider:
   m_ObjectHideFlags: 0
